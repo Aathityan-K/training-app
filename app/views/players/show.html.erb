@@ -1,0 +1,20 @@
+<div class="Name">
+    <strong><%= @player.Name %></strong>
+</div>
+<div class="Role">
+    <%= @player.Role %>
+</div>
+<h4> New Comment </h4>
+<%= form_with model: [@player, @player.comments.build] do |f| %>
+<%= f.text_area :body %><br>
+<%= f.submit %>
+<% end %>
+<h4> Comments </h4>
+<% @player.comments.each do |comment| %>
+<p><%= comment.body %></p>
+<% end %>
+<div class="show_button">
+<%= button_to "Edit", edit_player_path, method: :get %>
+<%= button_to "Delete", player_path, method: :delete %>
+<%= button_to "Back", players_path, method: :get %>
+</div>
